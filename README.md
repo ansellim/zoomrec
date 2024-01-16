@@ -6,6 +6,10 @@
 	A all-in-one solution to automatically join and record Zoom meetings.
 </h4>
 
+<h3>
+	This is a fork of the zoomrec repository. I am allowing meetings to be specified based on their absolute timings.
+</h3>
+
 <p align="center">
 	<a href="https://github.com/kastldratza/zoomrec/actions/workflows/docker-publish.yml"><img src="https://github.com/kastldratza/zoomrec/actions/workflows/docker-publish.yml/badge.svg" alt="GitHub Workflow Status"></a>
 	<a href="https://github.com/kastldratza/zoomrec/actions/workflows/codeql.yml"><img src="https://github.com/kastldratza/zoomrec/actions/workflows/codeql.yml/badge.svg" alt="GitHub Workflow Status"></a>
