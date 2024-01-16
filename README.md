@@ -7,43 +7,38 @@
 </h4>
 
 <h3>
-	This is a fork of the zoomrec repository. I am allowing meetings to be specified based on their absolute timings.
+	Comment by Ansel: This is a fork of the zoomrec repository. I am allowing meetings to be specified based on their actual timings/dates, instead of recurrent meetings that occur "every Wednesday" or something like that.
 </h3>
-
-<p align="center">
-	<a href="https://github.com/kastldratza/zoomrec/actions/workflows/docker-publish.yml"><img src="https://github.com/kastldratza/zoomrec/actions/workflows/docker-publish.yml/badge.svg" alt="GitHub Workflow Status"></a>
-	<a href="https://github.com/kastldratza/zoomrec/actions/workflows/codeql.yml"><img src="https://github.com/kastldratza/zoomrec/actions/workflows/codeql.yml/badge.svg" alt="GitHub Workflow Status"></a>
-	<a href="https://github.com/kastldratza/zoomrec/actions/workflows/snyk.yml"><img src="https://github.com/kastldratza/zoomrec/actions/workflows/snyk.yml/badge.svg" alt="GitHub Workflow Status"></a>
-	<a href="https://github.com/kastldratza/zoomrec/actions/workflows/snyk-container-analysis.yml"><img src="https://github.com/kastldratza/zoomrec/actions/workflows/snyk-container-analysis.yml/badge.svg" alt="GitHub Workflow Status"></a>
-    <br>
-    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/kastldratza/zoomrec">
-    <img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/kastldratza/zoomrec/latest">
-    <img alt="Github Stars" src="https://img.shields.io/github/stars/kastldratza/zoomrec.svg">
-</p>
-
----
-
-- **Python3** - _Script to automatically join Zoom meetings and control FFmpeg_
-- **FFmpeg** - _Triggered by python script to start/stop screen recording_
-- **Docker** - _Headless VNC Container based on Ubuntu 20.04 with Xfce window manager and TigerVNC_
-- **Telegram** - _Get notified about your recordings_
-
----
 
 Join with ID and Passcode           |  Join with URL
 :-------------------------:|:-------------------------:
 ![](doc/demo/join-meeting-id.gif)  |  ![](doc/demo/join-meeting-url.gif)
 
----
+## Installation
 
-
-## Install the Docker image
-
-
+### Install the Docker image
 ```bash
 # Build new image using customized Dockerfile
 docker build --tag zoomrec .
 ```
+
+### Create folders and set permissions (on Host)
+
+To have access to the recordings, a volume is mounted, so you need to create a folder that container users can access. Do the following on your host machine (that is, outside the Docker container).
+
+```bash
+mkdir -p example/audio
+
+mkdir -p recordings/screenshots
+chown -R 1000:1000 recordings
+
+mkdir -p audio
+chown -R 1000:1000 audio
+```
+
+Copy the contents of the `example` folder inside this repository INTO the `example` folder created above.
+
+Edit the `meetings.csv` file according to your actual meeting schedule.
 
 ### Run the container on Linux / macOS
 
@@ -61,17 +56,7 @@ zoomrec
 
 ## Preparation
 
-To have access to the recordings, a volume is mounted, so you need to create a folder that container users can access.
 
-### Create folders and set permissions (on Host)
-
-```
-mkdir -p recordings/screenshots
-chown -R 1000:1000 recordings
-
-mkdir -p audio
-chown -R 1000:1000 audio
-```
 
 
 
